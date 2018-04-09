@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas
+
+dataSetX = []
+dataSetY = []
+
+def labelValues():
+    plt.xLabel = input("What do you want to label the X axis? ")
+    plt.yLabel = input("What do you want to label the Y axis? ")
+    plt.label = input("What is the title of your graph or chart? ")
+
+def yValues():
+    while True:
+        data_entry = raw_input("Enter a y value (press enter when complete): ")
+        if data_entry == "":
+            break
+        else:
+            dataSetY.append(data_entry)
+            print(dataSetY)
+    labelValues()
+
+def xValues():
+    while True:
+        data_entry = raw_input("Enter an x value (press enter when complete): ")
+        if data_entry == "":
+            break
+        else:
+            dataSetX.append(data_entry)
+            print(dataSetX)
+    yValues()
+    
+xValues()
