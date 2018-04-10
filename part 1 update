@@ -1,0 +1,45 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas
+
+dataSetX = []
+dataSetY = []
+
+def graphType():
+    graph_type = input("What kind of graph would you like to make? ")
+    if "scatter" in graph_type or "Scatter" in graph_type:
+        plt.scatter(dataSetX, dataSetY)
+        plt.show
+    elif "line" in graph_type:
+        plt.plot(dataSetX, dataSetY)
+        plt.show
+    elif "bar" in graph_type:
+        plt.bar(dataSetX, dataSetY)
+        plt.show
+
+'''def labelValues():
+    plt.xLabel = input("What do you want to label the X axis? ")
+    plt.yLabel = input("What do you want to label the Y axis? ")
+    plt.label = input("What is the title of your graph or chart? ")'''
+
+def yValues():
+    while True:
+        data_entry = raw_input("Enter a y value (press enter when complete): ")
+        if data_entry == "":
+            break
+        else:
+            dataSetY.append(data_entry)
+            print(dataSetY)
+    graphType()
+
+def xValues():
+    while True:
+        data_entry = raw_input("Enter an x value (press enter when complete): ")
+        if data_entry == "":
+            break
+        else:
+            dataSetX.append(data_entry)
+            print(dataSetX)
+    yValues()
+    
+xValues()
