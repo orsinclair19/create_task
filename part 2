@@ -1,0 +1,71 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas
+
+# Global lists for the user-inputted data set values of x and y.
+dataSetX = []
+dataSetY = []
+
+# Lets user choose graph type then creates figure.
+def graphType():
+    graph_type = raw_input("What kind of graph would you like to make? ")
+    if "scatter" in graph_type:
+        plt.figure()
+        plt.scatter(dataSetX, dataSetY)
+        labelValues()
+    elif "line" in graph_type:
+        plt.figure()
+        plt.plot(dataSetX, dataSetY)
+        labelValues()
+    elif "bar" in graph_type:
+        plt.figure()
+        plt.bar(dataSetX, dataSetY)
+        labelValues()
+
+# Lets user title graph and create axis labels, then asks if user wants additional calculations. Produces graph in separate window.
+def labelValues():
+    x_label = raw_input("What do you want to label the X axis? ")
+    y_label = raw_input("What do you want to label the Y axis? ")
+    graph_label = raw_input("What is the title of your graph or chart? ")
+    font_size = raw_input("What do you want the font size to be? ")
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(graph_label, fontsize=(font_size))
+    calculate = raw_input("Calculate average, median and mode? ")
+    if "yes" in calculate:
+        calculateValues()
+    else:
+        print "You can save your graph by clicking the save icon on the far right of the tool bar."
+        plt.show()
+        
+ 
+def yValues():
+    while True:
+        data_entry = raw_input("Enter a y value (press enter when complete): ")
+        if data_entry == "":
+            break
+        else:
+            dataSetY.append(data_entry)
+            print(dataSetY)
+    graphType()
+
+def xValues():
+    while True:
+        data_entry = raw_input("Enter an x value (press enter when complete): ")
+        if data_entry == "":
+            break
+        else:
+            dataSetX.append(data_entry)
+            print(dataSetX)
+    yValues()
+    
+def calculateValues():
+    average = float(sum(dataSetX)) / float(len(dataSetX))
+    print "Average: " + str(average)
+    plt.show()
+    
+    
+def createGraph():
+    xValues()
+    
+createGraph()
